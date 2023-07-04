@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Code quality
 
-## Getting Started
+The repository is configure with tools (lint-staged, husky, commitlint) to ensure the code beeing commited follows the best practices defined in code and commit message linters.
 
-First, run the development server:
+### Commit lint
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+The commit message should follow the [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/) specification
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<details>
+  <summary>
+    <strong>Explaining the types of commits</strong>
+  </summary>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- `chore`: is applied to files that doesn't involve production code, for example: add libs, config files, linter, etc;
+- `test`: adding missing tests;
+- `feat`: to new features;
+- `fix`: when have bug fixes;
+- `refactor`: changes that involve refactoring in some part of production code;
+- `revert`: a commit that revert other commit, like `git revert`;
+- `style`: to changes that don't affect the meaning of code, like: white-space, formatting, missing semi-colons, order of imports/exports, etc;
+</details>
