@@ -1,0 +1,44 @@
+name: 'Dependencies'
+
+on:
+  workflow_call:
+    inputs:
+      CHECKOUT_REF:
+        required: false
+        type: string
+        default: ''
+    outputs:
+      node-version:
+        description: "The node version"
+        value: ${{ jobs.preflight.outputs.node-version }}
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  preflight:
+    name: Preflight
+    runs-on: ubuntu-latest
+    outputs:
+      node-version: ${{ steps.node-version.outputs.nodeVersion }}
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.CHECKOUT_REF }}
+
+      - name: Get node version
+        id: node-version
+        run: |
+          echo "::set-output name=nodeVersion::$(node --version)"
+
+      - name: Load cached node_modules
+        uses: actions/cache@v3
+        id: node-modules-cache
+        with:
+          path: '**/node_modules'
+          key: ${{ steps.node-version.outputs.nodeVersion }}_${{ runner.os }}_modules_${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: npm i
