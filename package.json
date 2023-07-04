@@ -7,8 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install",
-    "pre-commit": "next lint --fix && git add -A ."
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix ."
+    ]
   },
   "dependencies": {
     "@types/node": "20.3.3",
@@ -22,6 +26,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.3"
   }
 }
