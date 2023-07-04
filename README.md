@@ -1,3 +1,5 @@
+This is a repo with base configuration for production ready nextjs apps
+
 ## Code quality
 
 The repository is configure with tools (lint-staged, husky, commitlint) to ensure the code beeing commited follows the best practices defined in code and commit message linters.
