@@ -1,0 +1,64 @@
+.slider {
+  min-height: 100vh;
+  width: 100%;
+
+  display: grid;
+
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+}
+
+.slider > header {
+  grid-area: header;
+}
+
+.slider > main {
+  grid-area: main;
+}
+
+.slider footer {
+  grid-area: footer;
+}
+
+.header,
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+}
+
+.footer > .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 25%;
+  gap: 1rem;
+}
+
+.primarybtn {
+  padding: 0.5rem 2rem;
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  background-color: var(--primary-background);
+  cursor: pointer;
+}
+
+.secondarybtn {
+  padding: 0.5rem 2rem;
+  border-radius: var(--border-radius);
+  border: 0px;
+  color: var(--primary-background);
+  background-color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: underline;
+}
