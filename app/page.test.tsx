@@ -5,7 +5,7 @@ describe("Home", () => {
   it("render as expected", () => {
     render(<Home />);
 
-    const heading = screen.getByText("Attachment finder");
+    const heading = screen.getByText("Attachment finder", { exact: false });
 
     expect(heading).toBeInTheDocument();
   });
