@@ -4,6 +4,7 @@ import styles from "./slider.module.css";
 type SliderProps = {
   children: React.ReactNode;
   onStepChange: (step: number) => void;
+  max: number;
   onClose: () => void;
 };
 
@@ -11,6 +12,7 @@ export function Slider(props: SliderProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const handleNextStep = (offSet: number) => {
     if (currentStep + offSet < 1) return;
+    if (currentStep + offSet > props.max) return;
     setCurrentStep(currentStep + offSet);
     props.onStepChange(currentStep + offSet);
   };

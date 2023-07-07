@@ -6,7 +6,7 @@ describe("<Slider />", () => {
   const changeFn = jest.fn();
   const makeSut = () =>
     render(
-      <Slider onStepChange={changeFn} onClose={closeFn}>
+      <Slider onStepChange={changeFn} onClose={closeFn} max={2}>
         hello
       </Slider>
     );
