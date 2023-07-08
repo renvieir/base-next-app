@@ -1,43 +1,28 @@
 "use client";
-import Image from "next/image";
-import styles from "./page.module.css";
 import { useState } from "react";
-import { Slider } from "./components/Slider";
-
-function StepOne() {
-  return (
-    <div className={styles.center}>
-      <div>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-        <p>Mini - Standon (less than x lbs)</p>
-      </div>
-    </div>
-  );
-}
+import MachineryRepository from "@/app/repository/MachineryRepository";
+import { Attachment, Filter } from "./entities/Attachment";
+import { AttachmentConfiguration, Result, Loading } from "./components";
 
 export default function Home() {
-  const [step, setStep] = useState<React.ReactNode>(<StepOne />);
-  const handleStepChanged = (currentStep: number) => {
-    switch (currentStep) {
-      case 1:
-        setStep(<StepOne />);
-        break;
-
-      default:
-        setStep(<StepOne />);
-        break;
-    }
+  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<Attachment[]>([]);
+  const handleComplete = async (filters: Filter) => {
+    setLoading(true);
+    const results: Attachment[] = await MachineryRepository.getAttachments(
+      filters
+    );
+    setResults(results);
+    setLoading(false);
   };
+
   return (
-    <Slider onClose={() => null} onStepChange={handleStepChanged}>
-      {step}
-    </Slider>
+    <>
+      {loading && <Loading />}
+      {!loading && results.length === 0 && (
+        <AttachmentConfiguration onComplete={handleComplete} />
+      )}
+      {!loading && results.length > 0 && <Result results={results} />}
+    </>
   );
 }

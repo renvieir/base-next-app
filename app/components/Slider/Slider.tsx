@@ -6,13 +6,17 @@ type SliderProps = {
   onStepChange: (step: number) => void;
   max: number;
   onClose: () => void;
+  onFinish: () => void;
 };
 
 export function Slider(props: SliderProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const handleNextStep = (offSet: number) => {
     if (currentStep + offSet < 1) return;
-    if (currentStep + offSet > props.max) return;
+    if (currentStep + offSet > props.max) {
+      props.onFinish();
+      return;
+    }
     setCurrentStep(currentStep + offSet);
     props.onStepChange(currentStep + offSet);
   };

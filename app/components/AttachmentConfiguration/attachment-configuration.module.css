@@ -1,0 +1,22 @@
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  position: relative;
+  padding: 4rem 0;
+  width: 100%;
+  gap: 2rem;
+}
+
+.type {
+  padding: 4rem;
+  border: 2px solid var(--primary-background);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.type:hover,
+.type .selected{
+  border-width: 4px;
+}
